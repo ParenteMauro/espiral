@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let numeroFilas = parseInt( prompt("Ingrese numero de Filas: "))
+        let numeroColumnas = parseInt( prompt("Ingrese numero de Columnas: "))
+
+        let matriz = []
+
+        for( let i = 0; i<numeroFilas; i++){
+            matriz.push([])
+            for(let j=0;j<numeroColumnas;j++){
+                matriz[i][j] = 0
+            }
+        }
+
+        let i = 0;
+        let j = 0;
+        let contador=0;
+        let limiteVertical=numeroFilas
+        let limiteLateral=numeroColumnas
+        while(contador<numeroFilas*numeroColumnas){
+
+            let jInicial = j;
+
+            for(j; j < limiteLateral+jInicial; j++){
+                matriz[i][j]=contador
+                contador++
+            }
+
+            i++;
+            j--;
+            limiteVertical--
+
+            if( contador >= numeroFilas*numeroColumnas){
+
+                break
+
+            }
+
+            let iInicial = i;
+
+            for(i; i < limiteVertical + iInicial; i++){
+                matriz[i][j]=contador
+                contador++
+            }
+
+            j--;
+            i--;
+            limiteLateral--
+
+            if( contador >= numeroFilas*numeroColumnas){
+
+                break
+
+            }
+            jInicial=j;
+
+            for(j; j > jInicial-limiteLateral ;j--){
+                matriz[i][j]=contador
+                contador++;
+            }
+
+            j++;
+            i--;
+            limiteVertical--
+
+            if( contador >= numeroFilas*numeroColumnas){
+
+                break
+
+            }
+            iInicial=i
+
+            for(i; i >iInicial - limiteVertical ;i--){
+                matriz[i][j]=contador
+                contador++;
+            }
+            
+            i++;
+            j++;
+            limiteLateral--
+        }
+        console.log(matriz)
+
+
+
+    </script>
+</body>
+</html>

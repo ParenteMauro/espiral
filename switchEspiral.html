@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let numeroFilas = parseInt( prompt("Ingrese numero de Filas: "))
+        let numeroColumnas = parseInt( prompt("Ingrese numero de Columnas: "))
+
+        let matriz = []
+
+        for( let i = 0; i<numeroFilas; i++){
+            matriz.push([])
+            for(let j=0;j<numeroColumnas;j++){
+                matriz[i][j] = 0
+            }
+        }
+
+        let contador=0;
+        let limiteLateral=numeroColumnas
+        let limiteVertical=numeroFilas
+        let i=0
+        let j=0 
+        let iterador=0;
+            
+        while(contador<numeroColumnas*numeroFilas){
+            let iInicial=i;
+            let jInicial=j;
+            
+            switch(iterador%4){
+
+                case 0:{
+                   
+                    for(j; j < jInicial + limiteLateral; j++){
+                        matriz[i][j]=contador;
+                        contador++;
+                    }
+                    limiteVertical--
+                    j--
+                    i++
+                    break
+                }
+                case 1:{
+                    for(i; i < iInicial + limiteVertical; i++){
+                        matriz[i][j]=contador
+                        contador++
+                    }
+                    i--
+                    j--
+                    limiteLateral--
+                    break
+                }
+                case 2:{
+                    for(j; j > jInicial-limiteLateral; j--){
+                        matriz[i][j]=contador
+                        contador++
+                    }
+                    j++
+                    i--
+                    limiteVertical--
+
+                    break
+                }
+                case 3:{
+                    for(i; i > iInicial - limiteVertical; i--){
+                        matriz[i][j]=contador
+                        contador++
+                    }
+                    j++;
+                    i++;
+                    limiteLateral--
+                   
+                    break
+                }   
+            }
+            iterador++;
+        }
+        console.log(matriz)
+
+
+
+    </script>
+    
+</body>
+</html>
